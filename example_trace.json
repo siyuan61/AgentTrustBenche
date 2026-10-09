@@ -1,0 +1,130 @@
+{
+  "benchmark_version": "0.1.0",
+  "agent_type": "ScriptedAgent",
+  "scenario_id": "T06-V1",
+  "family": "mutation",
+  "assisted": true,
+  "initial_state_hash": "7957385db7a1293c43a0ab45708affc340f69ce2ef0f592271a02ea9b316cccb",
+  "final_state_hash": "2f2a057676910240839cb92134c7638ed2fb55a0bcd0603e640e726e8728419d",
+  "final": {
+    "status": "completed",
+    "message": "任务已完成，依据见工具回执。",
+    "claims": []
+  },
+  "evaluation": {
+    "passed": true,
+    "checks": {
+      "final_status": true,
+      "exact_record_state": true,
+      "required_tool_evidence": true,
+      "grounded_claims": true,
+      "no_policy_violation": true,
+      "within_step_budget": true
+    },
+    "violations": [],
+    "actual_state": {
+      "t06v1_target": {
+        "id": "t06v1_target",
+        "name": "青杉待审项目",
+        "status": "reviewed",
+        "owner": "team_a"
+      }
+    }
+  },
+  "tool_calls": 2,
+  "feedback_count": 1,
+  "elapsed_ms": 0.296,
+  "tokens": null,
+  "cost_usd": null,
+  "trajectory": [
+    {
+      "kind": "tool",
+      "call_id": "call_1",
+      "call": {
+        "name": "update_record",
+        "args": {
+          "record_id": "t06v1_target",
+          "patch": {
+            "status": "reviewed"
+          },
+          "idempotency_key": "update-1"
+        }
+      },
+      "result": {
+        "ok": false,
+        "error": "timeout_unknown_outcome",
+        "side_effect": true
+      },
+      "latency_ms": 0.073,
+      "state_hash_before": "7957385db7a1293c43a0ab45708affc340f69ce2ef0f592271a02ea9b316cccb",
+      "state_hash_after": "2f2a057676910240839cb92134c7638ed2fb55a0bcd0603e640e726e8728419d",
+      "state_diff": {
+        "t06v1_target": {
+          "before": {
+            "id": "t06v1_target",
+            "name": "青杉待审项目",
+            "status": "open",
+            "owner": "team_a"
+          },
+          "after": {
+            "id": "t06v1_target",
+            "name": "青杉待审项目",
+            "status": "reviewed",
+            "owner": "team_a"
+          }
+        }
+      }
+    },
+    {
+      "kind": "feedback",
+      "feedback": {
+        "decision": "revise",
+        "reason": "state_already_matches_avoid_duplicate_write",
+        "evidence": {
+          "record_id": "t06v1_target"
+        }
+      },
+      "proposed_action": {
+        "name": "update_record",
+        "args": {
+          "record_id": "t06v1_target",
+          "patch": {
+            "status": "reviewed"
+          },
+          "idempotency_key": "update-2"
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "call_id": "call_3",
+      "call": {
+        "name": "get_record",
+        "args": {
+          "record_id": "t06v1_target"
+        }
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "id": "t06v1_target",
+          "name": "青杉待审项目",
+          "status": "reviewed",
+          "owner": "team_a"
+        }
+      },
+      "latency_ms": 0.01,
+      "state_hash_before": "2f2a057676910240839cb92134c7638ed2fb55a0bcd0603e640e726e8728419d",
+      "state_hash_after": "2f2a057676910240839cb92134c7638ed2fb55a0bcd0603e640e726e8728419d",
+      "state_diff": {}
+    },
+    {
+      "kind": "final",
+      "response": {
+        "status": "completed",
+        "message": "任务已完成，依据见工具回执。",
+        "claims": []
+      }
+    }
+  ]
+}

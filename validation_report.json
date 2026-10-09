@@ -1,0 +1,18 @@
+{
+  "reference": {
+    "passed": 36,
+    "total": 36
+  },
+  "assisted_reference": {
+    "passed": 36,
+    "total": 36,
+    "feedback_events": 0
+  },
+  "fault_injection": {
+    "detected": 27,
+    "total": 27
+  },
+  "reference_failures": [],
+  "assisted_reference_failures": [],
+  "undetected_faults": []
+}
